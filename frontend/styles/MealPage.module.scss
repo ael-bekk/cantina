@@ -1,0 +1,166 @@
+.mealPage {
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 250px;
+    width: 100%;
+    z-index: 10;
+
+    .previous {
+      cursor: pointer;
+	  padding: 5px 10px;
+	  font-weight: 500;
+	  border-radius: 10px;
+	  color: var(--neutral600);
+	  &:active, &:hover {
+		  background-color: var(--neutral200);
+	  }
+      svg {
+		  color: var(--primary500);
+        polygon {
+          fill: var(--primary500);
+        }
+      }
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        font-size: 40px;
+        font-weight: 800;
+      }
+      h2 {
+        font-size: 20px;
+      }
+    }
+    .mealInfo {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .studentsNumber {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          fill: var(--neutral500);
+        }
+        span {
+          margin-left: 10px;
+          font-weight: 700;
+          font-size: 50px;
+          color: var(--primary500);
+        }
+      }
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 65vh;
+
+    .loginInput {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      width: 600px;
+
+      input {
+        padding: 10px 15px;
+        border-radius: 10px;
+        width: 80%;
+        border: 1px solid var(--neutral200);
+        color: var(--neutral600);
+        transition: all 0.2s;
+
+        &:focus {
+          outline: none !important;
+          border: 1px solid var(--primary500);
+        }
+        &::placeholder {
+          color: var(--neutral200);
+        }
+      }
+
+      button {
+        width: 17%;
+        text-align: center;
+        background-color: var(--primary500);
+		border: none;
+        color: var(--neutral0);
+        padding: 10px 15px;
+        border-radius: 10px;
+		&:active {
+			background-color: var(--primary300);
+		}
+      }
+    }
+    .logs {
+      display: flex;
+      flex-direction: column;
+      // background-color: var(--neutral150);
+      min-height: 500px;
+      width: 600px;
+      // padding: 15px;
+
+      .log {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px;
+        border-radius: 10px;
+        &:nth-child(odd) {
+          background-color: #f6f6f9a4;
+        }
+
+        img {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          margin-right: 15px;
+        }
+        .meta {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          p.login {
+            margin: 0;
+            background-color: var(--success200);
+            color: var(--neutral600);
+            padding: 5px 15px;
+            border-radius: 10px;
+            width: 130px;
+            text-align: center;
+          }
+          div {
+            p {
+              color: var(--neutral500);
+              font-size: 13px;
+              margin: 0;
+              &:first-child {
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--neutral700);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

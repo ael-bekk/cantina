@@ -1,0 +1,102 @@
+.toast_container {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    padding-right: 4px;
+    margin: 20px;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+    svg {
+        margin-left: 15px;
+    }
+
+    .success {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: var(--success500);
+    }
+    .error {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: var(--danger500);
+        // border: 1px solid var(--neutral300);
+    }
+    .warning {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: var(--warning500);
+    }
+    .info {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: var(--secondary500);
+    }
+
+    .time_bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        // background-color: aqua;
+        .time_bar_bg {
+            width: 100%;
+            // background-color: aqua;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: var(--neutral150);
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        p {
+            margin: 0;
+            font-weight: 500;
+            font-size: 18px;
+        }
+    }
+
+    .time_bar_overlay {
+        &.danger {
+            background-color: var(--danger500);
+        }
+        &.success {
+            background-color: var(--success500);
+        }
+        &.warning {
+            background-color: var(--warning500);
+        }
+        &.info {
+            background-color: var(--secondary500);
+        }
+    }
+}

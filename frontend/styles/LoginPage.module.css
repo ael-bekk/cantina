@@ -1,0 +1,115 @@
+
+
+.form_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.form_row .form_container h1 {
+    text-align: center;
+	margin-bottom: 20px;
+	text-transform: capitalize;
+	font-weight: 600;
+	color: var(--neutral700);
+}
+.form_row .form_container .loginInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form_row .form_container .loginInput input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--neutral200);
+    color: var(--neutral600);
+    transition: all 0.2s;
+}
+
+.form_row .form_container .loginInput input:focus {
+    outline: none !important;
+    border: 1px solid var(--primary500);
+}
+.form_row .form_container .loginInput input::placeholder {
+    color: var(--neutral200);
+}
+
+.loginBtn {
+	margin-bottom: 10px;
+	width: 100%;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: var(--primary500);
+	color: var(--neutral0);
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 500;
+	border: none;
+}
+.loginBtn:active {
+	background-color: var(--primary300);
+}
+.loginIntraBtn {
+	color: var(--neutral900);
+	cursor: pointer;
+	padding: 5px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--primary100);
+	border-radius: 10px;
+	width: fit-content;
+	margin-bottom: 15px;
+	transition: all .3s;
+	text-transform: capitalize;
+}
+.loginIntraBtn svg {
+	width: 40px;
+	margin: 0 6px;
+}
+.loginIntraBtn:hover {
+	color: var(--neutral700);
+	background-color: var(--primary200);
+}
+
+.copyRight {
+	text-align: center;
+	color: var(--neutral400);
+	margin: 0;
+	font-size: 14px;
+}
+
+.loginDevider {
+	margin: 10px 0;
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	color: var(--neutral500);
+}
+.loginDevider::before {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	content: "";
+	height: 2px;
+	width: 46%;
+	background-color: var(--neutral200);
+}
+.loginDevider::after {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	content: "";
+	height: 2px;
+	width: 46%;
+	background-color: var(--neutral200);
+}

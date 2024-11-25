@@ -1,0 +1,99 @@
+version: '2'
+
+services:
+
+    nginx: 
+        restart: unless-stopped
+        container_name: "nginx"
+        build: 
+            context: .
+            dockerfile: ./deployment/nginx/Dockerfile
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ./deployment/nginx:/etc/nginx/conf.d
+            - logging:/usr/share/nginx/logs
+            - /etc/ssl:/etc/ssl
+            - /usr/share/zoneinfo:/usr/share/zoneinfo
+        depends_on:
+            - backend
+            - frontend
+        networks:
+            - front-network
+    
+    frontend: 
+        restart: unless-stopped
+        container_name: "frontend"
+        build: 
+            context: .
+            dockerfile: ./deployment/frontend/Dockerfile
+        ports:
+            - 3000:3000
+        depends_on:
+            - backend
+        links:
+            - backend
+        networks:
+            - front-network
+        volumes:
+            - /usr/share/zoneinfo:/usr/share/zoneinfo
+
+    backend:
+        restart: unless-stopped
+        build:
+            context: .
+            dockerfile: ./deployment/backend/Dockerfile
+        entrypoint: /app/deployment/backend/asgi-entrypoint.sh
+        volumes:
+            - ./backend/logs:/app/backend/logs
+            - /usr/share/zoneinfo:/usr/share/zoneinfo
+        env_file:
+            - ./deployment/config.env       # <--- you have to change in this file.
+        ports:
+            - 8000:8000
+        depends_on:
+            - backendDB
+        networks:
+            - front-network
+            - back-network
+    
+    backendDB:
+        restart: unless-stopped
+        image: postgres:12.10
+        volumes:
+            - database:/var/lib/postgresql/data
+            - /usr/share/zoneinfo:/usr/share/zoneinfo
+        env_file:
+                - ./deployment/config.env              # <--- you have to change in this file.
+        networks:
+            - back-network
+
+    pgadmin4:
+        restart: unless-stopped
+        container_name: "cantina_pgadmin4"
+        image: dpage/pgadmin4:6.12
+        ports:
+            - 5050:80
+        labels:
+          traefik.frontend.rule: "PathPrefix:/pgadmin4"
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=amine.tahiri@1337.ma
+            - PGADMIN_DEFAULT_PASSWORD=PSvA4q5xTktAbk9P
+            - SCRIPT_NAME=/pgadmin4
+            - MAX_LOGIN_ATTEMPTS=10
+        volumes:
+            - pgadmin_data:/home/rundeck/server/data
+            - /usr/share/zoneinfo:/usr/share/zoneinfo
+        networks:
+            - back-network
+            - front-network
+
+volumes:
+    database: {}
+    logging: {}
+    pgadmin_data: {}
+
+networks:
+    front-network:
+    back-network:

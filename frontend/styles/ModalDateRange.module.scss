@@ -1,0 +1,54 @@
+.modal {
+    background-color: rgba(0, 0, 0, 0.3);
+    div[class="modal-dialog"] {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: fit-content;
+        div[class="modal-content"] {
+            border-radius: 15px;
+            background-color: aqua;
+            width: fit-content;
+
+            // .modal-header {
+            //     background-color: red;
+            // }
+        }
+    }
+    .cardBody {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 0;
+        // background-color: red;
+        width: 100%;
+        .find {
+            margin-top: 19px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            & .find_btn {
+                background-color: var(--primary300);
+                padding: 8px 25px;
+                color: var(--neutral0);
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s;
+                &:hover {
+                    background-color: var(--primary500);
+                }
+            }
+            & .download_btn {
+                background-color: teal;
+                padding: 8px 25px;
+                color: var(--neutral0);
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s;
+                &:hover {
+                    background-color: rgb(0, 99, 99);
+                }
+            }
+        }
+    }
+}
