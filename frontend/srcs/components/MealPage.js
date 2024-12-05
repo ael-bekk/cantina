@@ -14,28 +14,9 @@ import { useToasts } from "react-toast-notifications";
 export default function MealPage({ mealName, data }) {
   const [dataSet, setDataSet] = useState(data);
   const focusDiv = useRef();
-  const refSubmit = useRef();
 
   const router = useRouter();
   const { addToast } = useToasts();
-
-
-  const readBadge = async () => {
-    // call localhost:5010/read_card to read the badge using axios
-    const data = await axios.get("http://localhost:5010/read_card");
-    // !openModal && setLogin(e.target.value);
-    console.log(data);
-    if (!openModal) {
-      setLogin(data.data.uid);
-      refSubmit.current.click();
-    }
-  }
-
-  useEffect(() => {
-    setTimeout(function () {
-      readBadge();
-    }, 1000);
-  }, []);
 
   useEffect(() => {
     if (focusDiv.current) focusDiv.current.focus();
@@ -67,7 +48,6 @@ export default function MealPage({ mealName, data }) {
       );
     }
     setLogin("");
-    readBadge();
   };
 
   const getData = async () => {
@@ -272,13 +252,13 @@ export default function MealPage({ mealName, data }) {
                 type="password"
                 placeholder="1337 login"
                 value={login}
-                // onChange={(e) => {
-                //   !openModal && setLogin(e.target.value);
-                // }}
+                onChange={(e) => {
+                  !openModal && setLogin(e.target.value);
+                }}
                 onBlur={() => focusDiv.current.focus()}
                 ref={focusDiv}
               />
-              <button type="submit" ref={refSubmit}>Submit</button>
+              <button type="submit">Submit</button>
             </form>
           )}
           <div className={styles.logs}>

@@ -1,18 +1,13 @@
 from flask import Flask, jsonify
-from flask_cors import CORS, cross_origin
 import sys
 import time
 from serial.tools import list_ports
-
 
 # Add PN532 path
 # sys.path.append('..')
 import PN532
 
 app = Flask(__name__)
-
-cors = CORS(app) # allow CORS for all domains on all routes.
-app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Find the port that the PN532 is connected to
 port_name_key = "serial"
@@ -50,12 +45,12 @@ def read_card():
 
         # Convert UID to a string
         if isinstance(uid, bytes):
-            uid_str = int(uid.hex().upper(), 16)
+            uid_str = uid.hex().upper()
         else:
-            uid_str = int(uid.upper(), 16)
+            uid_str = uid.upper()
 
         # Return the UID as a JSON response
-        return jsonify({"status": "success", "uid": str(uid_str)})
+        return jsonify({"status": "success", "uid": uid_str})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5010)
